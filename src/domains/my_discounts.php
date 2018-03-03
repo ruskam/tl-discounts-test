@@ -54,7 +54,7 @@ class Discount
     /**
      * @return array
      */
-    public function getDiscountArray()
+    private function getDiscountArray()
     {
         return $this->discounts;
     }
@@ -79,6 +79,9 @@ class Discount
         return $this->total - $this->getSumOfDiscounts();
     }
 
+    /** The API to build and return a response array
+     * @return array
+     */
     public function buildDiscountsArray()
     {
         $totalSwitchesDiscounts = $this->discountForSwitchesCategory($this->order, $this->productsArray);
@@ -99,6 +102,9 @@ class Discount
         return $this->finalArray;
     }
 
+    /** Checks if discount on total amount is applicable
+     * @return bool
+     */
     private function isDiscountOnTotalAmountApplicable()
     {
         if ($this->getSumOfDiscounts() > $this->thresholdTotalAmount){
@@ -107,7 +113,10 @@ class Discount
         return false;
     }
 
-    private function discountOnTotalAmount($order,$thresholdTotalAmount, $discountPercentageByTotalAmount)
+    /** Applies discount on the total amount after all possible discounts are applied
+     * @return array|int
+     */
+    private function discountOnTotalAmount()
     {
         /* This discount is considered after all possible discounts are applied */
         $discByTotalArray = array('discount-metadata' => 'A customer who has already bought for over € 1000, gets a discount of 10% on the whole order.');
