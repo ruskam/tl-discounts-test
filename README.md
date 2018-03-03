@@ -1,1 +1,1 @@
-# tl-discounts-test
+# Service that calculates discounts for orders
