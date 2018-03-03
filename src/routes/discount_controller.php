@@ -22,13 +22,7 @@ $app->get('/api', function (Request $request, Response $response){
 
 });
 
-$app->get('/api/discount', function (Request $request, Response $response) {
-    $url = "src/services/products.json";
-    $arrayProducts = NetworkUtils::getData($url);
-    return $response->withJson($arrayProducts);
-});
-
-$app->post('/api/discount/get', function(Request $request, Response $response){
+$app->post('/api/discount/', function(Request $request, Response $response){
     $order = $request->getParsedBody();
     $url = "src/services/products.json";
     $productsArray = NetworkUtils::getData($url);
