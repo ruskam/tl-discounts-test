@@ -1,19 +1,19 @@
 # Service calculating discounts for orders
 **This is a REST Service implemented using SlimPHP framework**
 
-###System Requirements
+### System Requirements
 
 * Web server with URL rewriting
 * PHP 5.5 or newer
 
-###Software requirements
+### Software requirements
 
 The best way to install Slim framework is using [Composer](https://getcomposer.org/).
 Once Composer is installed you can run:
 
 `composer require slim/slim "^3.0"`
 
-###REST API endpoint
+### REST API endpoint
 
 The service is available at http://<'your-host'>/<'your-app''>/api/discount/
 
