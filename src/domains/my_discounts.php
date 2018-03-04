@@ -95,9 +95,9 @@ class Discount
             $this->addDiscount($discountOnTotalAmount['discount']);
             $this->finalArray[] = $discountOnTotalAmount;
         }
-        $this->finalArray['total'] = $this->order['total'];
-        $this->finalArray['total-discounts'] = $this->getSumOfDiscounts();
-        $this->finalArray['total-after-discounts'] = $this->calcTotalDiscounted();
+        $this->finalArray['total'] = formatNumber($this->total);
+        $this->finalArray['total-discounts'] = formatNumber($this->getSumOfDiscounts());
+        $this->finalArray['total-after-discounts'] = formatNumber($this->calcTotalDiscounted());
 
         return $this->finalArray;
     }
