@@ -15,11 +15,18 @@ Once Composer is installed you can run:
 
 ### REST API endpoint
 
-The service is available at http://<'your-host'>/<'your-app''>/api/discount/
+The service is available at http://<'your-host'>/<'your-app'>/api/discount/
 
 One should send a HTTP POST request. Sending [data](
 https://github.com/teamleadercrm/coding-test/blob/master/example-orders/order1.json) is required.
 
+
+### Business logic
+
+The logic is represented by 3 main methods:
+* discountForSwitchesCategory(...$args)
+* discountForToolsCategory(...$args)
+* discountOnTotalAmount()
 
 
 
