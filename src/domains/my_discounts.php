@@ -84,19 +84,28 @@ class Discount
      */
     public function buildDiscountsArray()
     {
+        /* Get a discount for Switches category */
         $totalSwitchesDiscounts = $this->discountForSwitchesCategory($this->order, $this->productsArray);
+        /* Add a discount value to the array holding all discount values */
         $this->finalArray[] = $totalSwitchesDiscounts;
 
+        /* Get a discount for Tools category */
         $totalToolsDiscounts = $this->discountForToolsCategory($this->order, $this->productsArray);
+        /* Add a discount value to the array holding all discount values */
         $this->finalArray[] = $totalToolsDiscounts;
 
+        /* If a discount on the total amount is applicable, it is applied */
         if ($this->isDiscountOnTotalAmountApplicable()){
             $discountOnTotalAmount = $this->discountOnTotalAmount($this->order, $this->thresholdTotalAmount, $this->discountPercentageByTotalAmount);
             $this->addDiscount($discountOnTotalAmount['discount']);
             $this->finalArray[] = $discountOnTotalAmount;
         }
+
+        /* Adding discount value to the response array */
         $this->finalArray['total'] = formatNumber($this->total);
         $this->finalArray['total-discounts'] = formatNumber($this->getSumOfDiscounts());
+
+        /* This is the core output amount to be paid by a customer */
         $this->finalArray['total-after-discounts'] = formatNumber($this->calcTotalDiscounted());
 
         return $this->finalArray;
@@ -151,12 +160,17 @@ class Discount
      */
     private function discountForSwitchesCategory($order, $productsArray)
     {
+
         $items = $order['items'];
+        /* Id of the Switches category */
         $categorySwitches = 2;
+        /* Discount pattern */
         $discountPattern = 5 + 1;
 
         $totalSwitchesItemsDiscountedArray = array('discount-metadata' => 'For every product of category "Switches" (id 2), when you buy five, you get a sixth for free.');
         $totalSwitchesDiscounts = 0;
+
+        /* Calculating the price for the whole bought amount while applying the discount */
         foreach ($items as $item) {
             foreach ($productsArray as $product) {
                 if ($item['product-id'] === $product['id'] && intval($product['category']) == $categorySwitches) {
