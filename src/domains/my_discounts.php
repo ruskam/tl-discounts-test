@@ -291,7 +291,7 @@ class Discount
      */
     private function calcMinUnitPrice($items){
         $minPrice = floatval($items[0]['unit-price']);
-        for ($i = 0; $i < count($items); $i++){
+        for ($i = 1; $i < count($items); $i++){
             if (floatval($items[$i]['unit-price']) < $minPrice){
                 $minPrice = floatval($items[$i]['unit-price']);
             }
