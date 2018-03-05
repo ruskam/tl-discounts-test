@@ -52,14 +52,6 @@ class Discount
     }
 
     /**
-     * @return array
-     */
-    private function getDiscountArray()
-    {
-        return $this->discounts;
-    }
-
-    /**
      * @return int|mixed
      */
     private function getSumOfDiscounts()
