@@ -94,11 +94,11 @@ class Discount
         }
 
         /* Adding discount value to the response array */
-        $this->finalArray['total'] = formatNumber($this->total);
-        $this->finalArray['total-discounts'] = formatNumber($this->getSumOfDiscounts());
+        $this->finalArray['total'] = $this->formatNumber($this->total);
+        $this->finalArray['total-discounts'] = $this->formatNumber($this->getSumOfDiscounts());
 
         /* This is the core output amount to be paid by a customer */
-        $this->finalArray['total-after-discounts'] = formatNumber($this->calcTotalDiscounted());
+        $this->finalArray['total-after-discounts'] = $this->formatNumber($this->calcTotalDiscounted());
 
         return $this->finalArray;
     }
